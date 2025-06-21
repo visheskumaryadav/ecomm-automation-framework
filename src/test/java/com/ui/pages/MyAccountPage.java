@@ -16,7 +16,7 @@ public class MyAccountPage extends BrowserUtility {
     }
 
     public boolean isAccountCreatedSuccessMessageDisplayed() {
-        return isElementVisible(SUCCESS_ALERT_LOCATOR);
+        return isElementDisplayed(SUCCESS_ALERT_LOCATOR);
     }
 
     public void clickAddMyFirstAddress() {

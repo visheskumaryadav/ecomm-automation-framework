@@ -52,6 +52,9 @@ public abstract class BrowserUtility {
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(locator));
         button.click();
     }
+    protected void click(WebElement webElement){
+        webElement.click();
+    }
     protected void enterInTextBox(By locator,String textToWrite){
         driver.get().findElement(locator).sendKeys(textToWrite);
     }
@@ -81,7 +84,7 @@ public abstract class BrowserUtility {
         return driver.get().findElements(locator);
     }
 
-    protected boolean isElementVisible(By locator) {
+    protected boolean isElementDisplayed(By locator) {
         try {
             return getElement(locator).isDisplayed();
         } catch (Exception e) {

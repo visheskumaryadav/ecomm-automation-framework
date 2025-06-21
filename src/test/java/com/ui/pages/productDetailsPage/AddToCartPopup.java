@@ -27,7 +27,7 @@ public class AddToCartPopup extends BrowserUtility {
     }
 
     public boolean isVisible() {
-        return isElementVisible(POPUP);
+        return isElementDisplayed(POPUP);
     }
 
     public String getSuccessMessage() {
