@@ -40,6 +40,9 @@ public class MyAccountPage extends BrowserUtility {
             click(PERSONAL_INFO_BTN);
     }
 
+    public String getSuccessMsg(){
+        return getElement(SUCCESS_ALERT_LOCATOR).getText();
+    }
 
 }
 

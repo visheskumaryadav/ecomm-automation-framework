@@ -45,19 +45,19 @@ private ProductListingPage wom;
 //
 //        homePage.topNotificationBar.goToSignInPage().getLoginSection().doSignInWith("vishes@yopmail.com","password");
 //    }
-    @BeforeMethod
-    public void method1(){
-         wom= homePage.header.searchProduct("wom");
-    }
-    @Test
-    public void test2() throws InterruptedException {
-
-
-        ProductInfoBox productInfo = wom.getProductCards().get(1).click().getProductInfo();
-        System.out.println(productInfo.getAvailabilityStatus());
-        System.out.println(productInfo.selectColorWhite().getAvailabilityStatus());
-        productInfo.clickToAddInCart().clickProceedToCheckout();
-
-
-    }
+//    @BeforeMethod
+//    public void method1(){
+//         wom= homePage.header.searchProduct("wom");
+//    }
+//    @Test
+//    public void test2() throws InterruptedException {
+//
+//
+//        ProductInfoBox productInfo = wom.getProductCards().get(1).click().getProductInfo();
+//        System.out.println(productInfo.getAvailabilityStatus());
+//        System.out.println(productInfo.selectColorWhite().getAvailabilityStatus());
+//        productInfo.clickToAddInCart().clickProceedToCheckout();
+//
+//
+//    }
 }

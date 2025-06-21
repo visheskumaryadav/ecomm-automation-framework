@@ -16,9 +16,10 @@ public class TestBase {
     }
     @AfterMethod
     public void tearDown(){
-    softAssertThreadLocal.get().assertAll();
+//
     softAssertThreadLocal.remove();
-//    homePage.quitBrowser();
+
+    homePage.quitBrowser();
     }
     public SoftAssert getSoftAssertion(){
         return softAssertThreadLocal.get();

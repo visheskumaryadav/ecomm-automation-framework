@@ -27,4 +27,8 @@ public class TopNotificationBar extends BrowserUtility {
         click(CONTACT_US_LOCATOR);
     }
 
+    public String getUserName(){
+       return getElement(USER_NAME_LOCATOR).getText().trim();
+
+    }
 }
