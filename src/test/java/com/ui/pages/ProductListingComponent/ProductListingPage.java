@@ -13,6 +13,7 @@ public class ProductListingPage extends BrowserUtility {
     private static By PRODUCT_CARD_LOCATOR= By.cssSelector(".product-container");
     private static By COMPARE_BTN_LOCATOR= By.cssSelector(".top-pagination-content .bt_compare");
 
+    private static By SEARCH_ERROR_MSG=By.cssSelector(".alert.alert-warning");
     public ProductListingPage(WebDriver driver){
         super(driver);
 
@@ -25,6 +26,10 @@ public class ProductListingPage extends BrowserUtility {
             productCards.add(new ProductCard(card,getDriver()));
         }
         return productCards;
+    }
+
+    public String getErrorMsg(){
+        return getElement(SEARCH_ERROR_MSG).getText().trim();
     }
 
 }

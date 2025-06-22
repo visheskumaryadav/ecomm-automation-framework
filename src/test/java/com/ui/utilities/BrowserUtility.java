@@ -1,11 +1,14 @@
 package com.ui.utilities;
 
 import com.constants.Browser;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -14,9 +17,11 @@ import java.time.Duration;
 import java.util.List;
 
 public abstract class BrowserUtility {
+    private Logger logger= LoggerUtils.logger(this.getClass());
     private static ThreadLocal<WebDriver> driver =new ThreadLocal<>();
 
     public BrowserUtility(){
+        logger.info("Launching chrome browser");
         driver.set(new ChromeDriver());
     }
     public BrowserUtility(WebDriver driver){
@@ -24,6 +29,7 @@ public abstract class BrowserUtility {
     }
 
     public BrowserUtility(Browser browser){
+        logger.info("Launching browser "+browser);
         if(browser==Browser.CHROME){
             driver.set(new ChromeDriver());
         }else if(browser==Browser.EDGE){
@@ -39,6 +45,26 @@ public abstract class BrowserUtility {
             System.err.println("Invalid browser name");
         }
     }
+    public BrowserUtility(Browser browser,boolean isHeadLess){
+        logger.info("Launching browser "+browser);
+        if(browser==Browser.CHROME){
+            if(isHeadLess){
+                ChromeOptions options=new ChromeOptions();
+                options.addArguments("--headless");
+                driver.set(new ChromeDriver(options));
+            }else {
+                driver.set(new ChromeDriver());
+            }
+        }else if(browser==Browser.EDGE){
+            if(isHeadLess){
+                EdgeOptions options=new EdgeOptions();
+                options.addArguments("--headless");
+                driver.set(new EdgeDriver(options));
+            }else {
+                driver.set(new EdgeDriver());
+            }
+        }
+    }
 
     protected WebDriver getDriver() {
         return driver.get();
@@ -46,9 +72,10 @@ public abstract class BrowserUtility {
 
     protected void goToWebsite(String url){
         driver.get().get(url);
+        logger.info(">>>>>><<<<<<<<<<< URL::"+url);
     }
     protected void click(By locator){
-        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(20));
         WebElement button = wait.until(ExpectedConditions.elementToBeClickable(locator));
         button.click();
     }
@@ -62,7 +89,7 @@ public abstract class BrowserUtility {
         return driver.get().getTitle();
     }
     protected void selectRadioBtn(By locator){
-        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(20));
         WebElement radioBtn = wait.until(ExpectedConditions.elementToBeClickable(locator));
         radioBtn.click();
     }

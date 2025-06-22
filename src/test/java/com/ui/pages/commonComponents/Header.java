@@ -18,6 +18,7 @@ public class Header extends BrowserUtility {
         super(driver);
     }
 
+
     public ProductListingPage searchProduct(String productName){
         enterInTextBox(SEARCH_BOX_LOCATOR,productName);
         click(SEARCH_BUTTON_LOCATOR);

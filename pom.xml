@@ -60,6 +60,14 @@
           <suiteXmlFiles>
             <suiteXmlFile>testng.xml</suiteXmlFile>
           </suiteXmlFiles>
+          <systemPropertyVariables>
+            <!--suppress UnresolvedMavenProperty -->
+            <browser>${browser}</browser>
+            <!--suppress UnresolvedMavenProperty -->
+            <isLambdaTest>${isLambdaTest}</isLambdaTest>
+            <!--suppress UnresolvedMavenProperty -->
+            <isHeadLess>${isHeadLess}</isHeadLess>
+          </systemPropertyVariables>
         </configuration>
       </plugin>
 

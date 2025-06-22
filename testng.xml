@@ -2,6 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="methods" thread-count="3">
     <test verbose="2" preserve-order="true" name="EcomAutomationFramework">
+        <parameter name="browser" value="${browser}"/>
+        <parameter name="isLambdaTest" value="${isLambdaTest}"/>
+        <parameter name="isHeadLess" value="${isHeadLess}"/>
         <classes>
             <class name="com.ui.tests.AuthenticationTest"/>
         </classes>

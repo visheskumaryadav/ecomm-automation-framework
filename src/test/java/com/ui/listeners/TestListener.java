@@ -16,7 +16,7 @@ public class TestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
         logger.info(result.getMethod().getMethodName());
         logger.info(result.getMethod().getDescription());
-        logger.info(Arrays.toString(result.getMethod().getGroups()));
+//        logger.info(Arrays.toString(result.getMethod().getGroups()));
         ExtentReportUtility.createExtentTest(result.getMethod().getMethodName());
     }
 

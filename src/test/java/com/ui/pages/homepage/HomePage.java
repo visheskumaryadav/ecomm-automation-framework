@@ -20,12 +20,13 @@ public class HomePage extends BrowserUtility {
     private NavigationBar navigationBar;
 
 
-    public HomePage(Browser browser) {
-        super(browser);
+    public HomePage(Browser browser,boolean isHeadless) {
+        super(browser,isHeadless);
         goToWebsite(readProperty(QA,"url"));
     }
     public HomePage(WebDriver driver) {
         super(driver);
+        goToWebsite(readProperty(QA,"url"));
     }
 
     public TopNotificationBar getTopNotificationBar() {
