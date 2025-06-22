@@ -1,5 +1,6 @@
 package com.ui.utilities;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -19,8 +20,8 @@ public class LambdaTestUtility {
         capabilities.setCapability("browserName", browserName);
         capabilities.setCapability("browserVersion", "137");
         Map<String, Object> ltOptions = new HashMap<>();
-        ltOptions.put("user", "dacc7576");
-        ltOptions.put("accessKey", "LT_YydpEoXHzllLcRk6iU5noH0FYr75sMhMQMAcdVAiOcW79Iw");
+        ltOptions.put("user", Dotenv.load().get("LT_USERNAME"));
+        ltOptions.put("accessKey", Dotenv.load().get("LT_ACCESS_KEY"));
         ltOptions.put("build", "Selenium 4");
         ltOptions.put("name", testName);
         ltOptions.put("platformName", "Windows 10");
